@@ -21,10 +21,9 @@ peek.last(db, {end: 'z'}, function (err, key, value) {
 })
 ```
 
-> note, it's tricky getting ranges right when doing reverse range queries.
-> level-peek fixes this, by adjusting the range to make sense.
->
 
+see also, [level-fix-range](https://github.com/dominictarr/level-fix-range)
+and https://github.com/rvagg/node-levelup/issues/110
 
 ## License
 
