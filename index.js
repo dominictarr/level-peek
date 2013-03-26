@@ -42,6 +42,10 @@ function first (db, opts, cb) {
   return peek(db, fixRange(opts), cb)  
 }
 
+//SO, this is pretty horrible,
+//but it's works around an issue here
+//https://github.com/rvagg/node-levelup/issues/110
+
 function last (db, opts, cb) {
   var start = opts.start
   opts.reverse = true
