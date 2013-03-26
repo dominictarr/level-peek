@@ -17,43 +17,70 @@ db.batch([
   if(err) throw err
 
 
-  test('peek', function (t) {
-    var n = 4
+  test('peek.first', function (t) {
+    var n = 7
 
     peek.first(db, {}, function (err, key, value) {
       t.equal(value, 'apple')
-      next()
+      t.end()
     })
+
+  })
+
+  test('peek.last', function (t) {
 
     peek.last(db, {}, function (err, key, value) {
       t.equal(value, 'elder-berry')
-      next()
+      t.end()
     })
+
+  })
+
+  test('peek.last({end: "C"})', function (t) {
 
     peek.last(db, {end: 'C'}, function (err, key, value) {
       console.log('LAST')
       t.equal(value, 'cherry')
-      next()
+      t.end()
     })
+
+  })
+
+  test('peek.last({end: "D~"})', function (t) {
+
+    peek.last(db, {end: 'D~'}, function (err, key, value) {
+      console.log('LAST')
+      t.equal(value, 'durian')
+      t.end()
+    })
+  })
+
+  //start: from a middle record
+  test('peek.first({start: "C"})', function (t) {
 
     peek.first(db, {start: 'C'}, function (err, key, value) {
       t.equal(value, 'cherry')
-      next()
+      t.end()
     })
 
-    function next () {
-      if(--n) return
-      console.log('END')
+  })
+
+  //start to after the last record.
+  test('peek.last({end: "E~"})', function (t) {
+
+    peek.last(db, {end: 'E~'}, function (err, key, value) {
+      t.equal(value, 'elder-berry')
       t.end()
-    }
-  })
-
-/*  test('stream', function () {
-    db.createReadStream({reverse:true, start: 'B~'})
-      .on('data', console.log)
+    })
 
   })
-*/
+
+  test("peek.last({start: 'E~', end: 'E!'})", function (t) {
+    peek.last(db, {start: 'E~', end: 'E!'}, function (err, key, value) {
+      t.equal(value, null)
+      t.end()
+    })
+  })
 })
 
 
