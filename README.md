@@ -12,13 +12,12 @@ var peek = require('level-peek')
 
 //get the first value, 'a' or after
 peek.first(db, {start: 'a'}, function (err, key, value) {
-  
+  console.log(key, value)
 })
-
 
 //get last value, 'z' or before.
 peek.last(db, {end: 'z'}, function (err, key, value) {
-  
+  console.log(key, value)
 })
 ```
 
