@@ -38,6 +38,10 @@ function peek (db, opts, cb) {
 }
 
 function first (db, opts, cb) {
+  if (!cb) {
+    cb = opts;
+    opts = {};
+  }
   opts.reverse = false
   return peek(db, fixRange(opts), cb)  
 }
@@ -47,6 +51,10 @@ function first (db, opts, cb) {
 //https://github.com/rvagg/node-levelup/issues/110
 
 function last (db, opts, cb) {
+  if (!cb) {
+    cb = opts;
+    opts = {};
+  }
   var start = opts.start
   opts.reverse = true
   return peek(db, fixRange(opts), function (err, key, value) {
