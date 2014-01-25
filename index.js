@@ -31,9 +31,17 @@ function peek (db, opts, cb) {
       if(opts.reverse && data && opts.start 
         && (data.key.toString() > opts.start))
         return false
-      if(event == 'error') cb(data)
-      else if(event == 'end') cb(new Error('range not found'), null, null)
-      else cb(null, data.key, data.value)
+      if(event == 'error') return setImmediate(function() {
+        cb(data)
+      })
+      if(event == 'end') {
+        return setImmediate(function() {
+          cb(new Error('range not found'), null, null)
+        })
+      }
+      return setImmediate(function(){
+        cb(null, data.key, data.value)
+      })
     })
 }
 
