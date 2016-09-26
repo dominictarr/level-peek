@@ -8,7 +8,7 @@
     "url": "git://github.com/dominictarr/level-peek.git"
   },
   "dependencies": {
-    "pull-level": "~1.1.11",
+    "pull-level": "^2.0.3",
     "pull-stream": "~2.24.0"
   },
   "devDependencies": {
