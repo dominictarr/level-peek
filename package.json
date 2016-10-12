@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "pull-level": "^2.0.3",
-    "pull-stream": "~2.24.0"
+    "pull-stream": "^3.4.5"
   },
   "devDependencies": {
+    "level-sublevel": "~6.3.0",
     "level-test": "~1.6.3",
-    "tape": "~2.14.0",
-    "level-sublevel": "~6.3.0"
+    "tape": "~2.14.0"
   },
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
